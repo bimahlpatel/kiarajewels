@@ -728,5 +728,4 @@
         <?php
             include_once(APPPATH.'views/includes/footer.php');
         ?>
-            <script src="<?php echo base_url('assets/js/chart/apex-chart/apex-chart.js')?>"></script>
-            <script src="<?php echo base_url('assets/js/chart/apex-chart/stock-prices.js')?>"></script>
+           

@@ -42,7 +42,7 @@
                                      <div class="light-box"><a data-bs-toggle="collapse" href="#collapseProduct"
                                              role="button" aria-expanded="false" aria-controls="collapseProduct"><i
                                                  class="filter-icon show" data-feather="filter"></i><i
-                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="#!" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Category</a>
+                                                 class="icon-close filter-close hide"></i></a></div><a class="btn btn-primary f-w-500" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8"><i class="fa fa-plus pe-2"></i>Add Category</a>
                                  </div>
                                  <div class="collapse" id="collapseProduct">
                                      <div class="card card-body list-product-body">
@@ -126,14 +126,10 @@
                                              </td>
                                              <td> <span class="badge badge-light-primary"><?php echo $row->category_type;?></span></td>
                                              <td>
-                                                 <div class="product-action">
-                                                     <svg>
-                                                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#edit-content"></use>
-                                                     </svg>
-                                                     <svg>
-                                                         <use href="<?php echo base_url()?>assets/svg/icon-sprite.svg#trash1"></use>
-                                                     </svg>
-                                                 </div>
+                                             <ul class="action"> 
+                                                    <li class="edit"> <a href="<?php echo base_url()?>category/editForm/<?php echo $row->category_id;?>"><i class="icon-pencil-alt"></i></a></li>
+                                                    <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                                </ul>
                                              </td>
                                          </tr>
 

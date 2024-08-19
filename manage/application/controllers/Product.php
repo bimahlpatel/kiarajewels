@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-Class Category extends CI_Controller {
+Class Product extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
+		$this->load->model('Manage_Product_Model');
 		$this->load->model('Manage_Category_Model');
 		if(! $this->session->userdata('adminid')) {
 			redirect('login');
@@ -11,23 +12,37 @@ Class Category extends CI_Controller {
 	}
 
 	public function index(){
-		$categorylist = $this->Manage_Category_Model->getcategorylist();
-		$this->load->view('category_detail',['categorylist'=>$categorylist]);
+		$productlist = $this->Manage_Product_Model->getproductlist();
+		$this->load->view('product_detail',['productlist'=>$productlist]);
 	}
 
-	public function addCategory(){
+	public function addproduct(){
+		$categorylist = $this->Manage_Category_Model->getcategorylist();
+		$this->load->view('add_product',['categorylist'=>$categorylist]);
+	}
+
+	public function insertproduct(){
+
+		$product_image = "placeholder.jpg";
+
+		if($_FILES['product_image']['name'] != '') {
+			$product_image = $this->Manage_Product_Model->single_file_upload('product_image', 'product', 'jpg|gif|png|jpeg', 0, $_FILES['product_image']['name']);
+		}
+
 		$data = array(
-			'category_name' => $_REQUEST['categoryname'],
-			'category_slug' => $_REQUEST['categoryslug'],
-			'parent_category' => $_REQUEST['parentcategory'],
-			'category_type' => $_REQUEST['categorytype'],
-			'category_status' => $_REQUEST['categorystatus'],
+			'product_title' => $_REQUEST['productname'],
+			'product_slug' => $_REQUEST['productslug'],
+			'product_sku' => $_REQUEST['productsku'],
+			'product_cat_id' => $_REQUEST['productcategory'],
+			'product_description' =>$_REQUEST['product_desc'],
+			'product_image'=>$product_image,
 			'created_date' => date('Y-m-d H:i:s'),
+			'isActive' => $_REQUEST['productstatus'],
 		);
 		
-		$response = $this->Manage_Category_Model->addcategory($data);
+		$response = $this->Manage_Product_Model->addproduct($data);
 
-		redirect('Category');
+		redirect('product');
 	}
 
 	public function editForm($id){

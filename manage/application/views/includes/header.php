@@ -26,6 +26,7 @@
     <?php echo link_tag('assets/css/vendors/scrollbar.css'); ?>
     <?php echo link_tag('assets/css/vendors/animate.css'); ?>
     <?php echo link_tag('assets/css/vendors/jquery.dataTables.css'); ?>
+    <?php echo link_tag('assets/css/vendors/dataTables.bootstrap5.css'); ?>
     <?php echo link_tag('assets/css/vendors/select.bootstrap5.css'); ?>
     <?php echo link_tag('assets/css/vendors/sweetalert2.css'); ?>
     <?php echo link_tag('assets/css/vendors/bootstrap.css'); ?>
@@ -98,7 +99,7 @@
               </li>
               <li class="profile-nav onhover-dropdown pe-0 py-0">
                 <div class="media profile-media"><img class="b-r-10" src="<?php echo base_url()?>assets/images/dashboard/profile.png" alt="">
-                  <div class="media-body"><span><?php echo $this->session->userdata('kiaadminname'); ?></span>
+                  <div class="media-body"><span><?php echo $this->session->userdata('adminname'); ?></span>
                     <p class="mb-0">Admin <i class="middle fa fa-angle-down"></i></p>
                   </div>
                 </div>

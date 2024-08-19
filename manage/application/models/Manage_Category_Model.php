@@ -28,6 +28,7 @@ Class Manage_Category_Model extends CI_Model {
 		return $sql_query;
 	}
 
+
 	public function changestatus($statusid, $id){
 		if($statusid == 1) {
 			$data = array(

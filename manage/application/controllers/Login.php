@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Class Login extends CI_Controller {
 
 	public function index() {	
-		if($this->session->userdata('kiaadminid')) {
+		if($this->session->userdata('adminid')) {
 			return redirect('dashboard');
 		}
 		$this->load->view('login');
@@ -17,9 +17,9 @@ Class Login extends CI_Controller {
 			$validate = $this->Manage_Login_Model->checklogin($emailid, $enc_password);
 				
 			if($validate) {
-				$this->session->set_userdata('kiaadminid',$validate->id);
-				$this->session->set_userdata('kiaadminname',$validate->fullname);
-				$this->session->set_userdata('kiaadmintype',$validate->role);
+				$this->session->set_userdata('adminid',$validate->id);
+				$this->session->set_userdata('adminname',$validate->fullname);
+				$this->session->set_userdata('admintype',$validate->role);
 				echo json_encode(array("success"=>true, "message"=>"Login successful."));
 			} 
 			else {
@@ -60,9 +60,9 @@ Class Login extends CI_Controller {
 		$this->load->model('Manage_Login_Model');
 		$validate = $this->Manage_Login_Model->updateadminlog($adminlogid);
 
-		$this->session->unset_userdata('kiaadminid');
-        $this->session->unset_userdata('kiaadminname');
-        $this->session->unset_userdata('kiaadmintype');
+		$this->session->unset_userdata('adminid');
+        $this->session->unset_userdata('adminname');
+        $this->session->unset_userdata('admintype');
 		$this->session->sess_destroy();
 		return redirect('login');
 	}
